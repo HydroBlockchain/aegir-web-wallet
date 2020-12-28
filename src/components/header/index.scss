@@ -97,8 +97,14 @@
   .mx-auto {
     background: #171717 !important;
     padding-top: 2rem;
-    margin: 10px;
-    height: 100%;
+  }
+
+  .mobile-menu-fix{
+    width: 90%;
+    display: flex!important;
+    flex-direction: column;
+    justify-content: flex-end!important;
+    align-items: flex-end;
   }
 
   .navbar .onboardingButton {

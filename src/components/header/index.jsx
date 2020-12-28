@@ -87,7 +87,7 @@ class Header extends React.Component {
 
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto align-items-center" navbar>
-              <div>
+              <div className="mobile-menu-fix">
                 <HeaderAccount/>
                 <div className="routes3">
                 <NavLink tag={RouterNavLink} exact to="/wallet">
