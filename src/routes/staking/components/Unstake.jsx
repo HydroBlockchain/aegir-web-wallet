@@ -32,6 +32,7 @@ import React, {
     formatAmount,
   } from '../../../services/format';
   import TransactButton from './buttons/TransactButton';
+  import Deadline from './Deadline';
 
   var numeral = require('numeral');
 
@@ -60,9 +61,9 @@ import React, {
     }, [snowflakeBalance]);
 
 
-    let funds = 'sufficient-funds'
+    let funds = 'sufficient-funds pt-2'
     if(parseInt(props.stakingBalance) < parseInt(amountToUnstake) ){
-      funds = 'insufficient-funds'
+      funds = 'insufficient-funds pt-2'
     }
 
     return (
@@ -78,9 +79,10 @@ import React, {
 
             <div className="tooltips"> <i class="fas fa-info-circle"  style={{cursor:"pointer"}}/>
             <span className="tooltiptexts">Information
-            <p className="mt-2">1. Lock-up hydro tokens to get an annualized yield of 7-12%</p>
-            <p className="mt-1">2. Total supply for Staking : 100 Million Hydro Tokens</p>
-            <p className="mt-1 mb-2">3. Token holders can also unstake partial or full tokens before maturity. With the loss of some benefits.</p>
+            <p className="mt-2">1. First time stakers will need to request a 1-time approval before staking.</p>
+            <p className="mt-2">2. Staked hydro tokens will be locked & cannot be unstaked for 90 days</p>
+            <p className="mt-2">3. Staked hydro token will get an annualized yield of 7-12%</p>
+            <p className="mt-1">4. Staking rewards is claimable anytime & without lock-up period</p>
             </span>
             </div>
 
@@ -112,14 +114,16 @@ import React, {
 
                 </div>
               </div>
+           <Deadline deadline={props.deadline}/>
+          <div className={funds}><strong>Insufficient Stake Balance</strong></div>
+         
 
-          <section className={funds}><strong>Insufficient Stake Balance</strong></section>
-
-        <Row className="justify-content-center mt-3">
+        <Row className="justify-content-center mt-2">
           <Col className="text-center">
           <TransactButton
             readyText='Unstake'
-            method={()=>props.contract.methods.withdraw(toWei(amountToUnstake))}
+            disabled={false}
+            method={()=>props.contract.methods.withdraw(toWei(amountToUnstake))}         
           />
           </Col>
         </Row>

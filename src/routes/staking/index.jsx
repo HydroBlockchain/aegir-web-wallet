@@ -40,7 +40,7 @@ export default class Staking extends Component {
     }
  
     else{console.log('No Web3 Detected')
-    window.web3 = new Web3(new Web3.providers.WebsocketProvider('wss://rinkeby.infura.io/ws/v3/72e114745bbf4822b987489c119f858b'));  
+    window.web3 = new Web3(new Web3.providers.WebsocketProvider('wss://mainnet.infura.io/ws/v3/72e114745bbf4822b987489c119f858b'));  
     } 
    
     const network = await web3.eth.net.getNetworkType();
@@ -53,7 +53,7 @@ export default class Staking extends Component {
     this.setState({account: accounts[0]}); 
     }
 
-    const Staking_Address = '0x0Bf07f9Ca57f19EBd72f5D29a8cc39270b4421D2';
+    const Staking_Address = '0x83885CcB5a1bffF7a4C2A88dD8b2254b261c76BD';
     if (this._isMounted){ 
       this.setState({Staking_Address:Staking_Address})
     }
@@ -85,6 +85,11 @@ export default class Staking extends Component {
     const stakingBalance = await this.state.stakingContract.methods.balanceOf(this.state.account).call()
     if (this._isMounted){
       this.setState({stakingBalance:web3.utils.fromWei(stakingBalance)},()=>console.log())
+   }
+
+   const deadline = await this.state.stakingContract.methods.canWithdrawAt(this.state.account).call()
+    if (this._isMounted){
+      this.setState({deadline:new Date(parseInt(deadline,10)*1000)},()=>console.log())
    }
 
    const totalStaking= await this.state.stakingContract.methods.totalSupply().call()
@@ -122,6 +127,7 @@ export default class Staking extends Component {
         normalBalance:'',
         allowance:'',
         totalStaking:'',
+        deadline:0,
         
 
         address:null,
@@ -171,7 +177,11 @@ render(){
       
       <Row className="identity__row fadeit mt-5">
       <Col sm="12" md="12" lg="12" xl="12">
-      <Unstake duration={this.state.duration} account={this.state.account} contract={this.state.stakingContract} stakingBalance={this.state.stakingBalance}/>  
+      <Unstake duration={this.state.duration} 
+      account={this.state.account} 
+      contract={this.state.stakingContract} 
+      stakingBalance={this.state.stakingBalance}
+      deadline={this.state.deadline}/>  
 
         </Col>
       </Row>

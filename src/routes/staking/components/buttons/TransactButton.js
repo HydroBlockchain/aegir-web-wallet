@@ -46,6 +46,9 @@ const styles = () => ({
 });
 
 
+
+
+
 function TransactButton({
   show,
   method,
@@ -67,14 +70,17 @@ function TransactButton({
     transactionOptions: transactionOptions
   });
 
-  
+  let clickable = 'table_button';
+  if(disabled){
+    clickable = 'disabled_button';
+  }
       return (
         <Button
           style={show ? undefined : { display: "none" }}
           variant="contained"
           onClick={sendTransaction}
           disabled={disabled}
-        className="txButton">
+          className="txButton">
           {readyText}
         </Button>
       );
