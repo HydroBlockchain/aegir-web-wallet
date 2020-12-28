@@ -54,36 +54,27 @@ class Header extends React.Component {
           <NavbarBrand tag={RouterNavLink} exact to="/wallet">
           <h2 className="header__title">
               <img src={headerLogo} alt="Powered by Hydro" className="header__logo" />
-
             </h2>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
-
           <div>
             <NavItem>
-
             <div className="routes">
-
             <NavLink tag={RouterNavLink} exact to="/wallet">
-
             <h2 className="header__title ">
             <Badge className="sidebar__badge" color="secondary" pill>
                 </Badge>
                 Wallet
             </h2>
             </NavLink>
-
             <NavLink tag={RouterNavLink} exact to="/staking">
-
             <h2 className="header__title ">
             <Badge className="sidebar__badge" color="secondary" pill>
                 </Badge>
                 Staking
             </h2>
             </NavLink>
-
             <NavLink tag={RouterNavLink} exact to="/overview">
-
             <h2 className="header__title">
             <Badge className="sidebar__badge" color="secondary" pill>
                 </Badge>
@@ -91,46 +82,29 @@ class Header extends React.Component {
             </h2>
             </NavLink>
             </div>
-
             </NavItem>
           </div>
 
-
-
-
           <Collapse isOpen={isOpen} navbar>
-
             <Nav className="ml-auto align-items-center" navbar>
-
-              <NavItem>
-
               <div>
-                <NavItem>
-
                 <HeaderAccount/>
-
                 <div className="routes3">
-
                 <NavLink tag={RouterNavLink} exact to="/wallet">
-
                 <h2 className="header__title ">
                 <Badge className="sidebar__badge" color="secondary" pill>
                     </Badge>
                     Wallet
                 </h2>
                 </NavLink>
-
                 <NavLink tag={RouterNavLink} exact to="/staking">
-
                 <h2 className="header__title ">
                 <Badge className="sidebar__badge" color="secondary" pill>
                     </Badge>
                     Staking
                 </h2>
                 </NavLink>
-
                 <NavLink tag={RouterNavLink} exact to="/overview">
-
                 <h2 className="header__title">
                 <Badge className="sidebar__badge" color="secondary" pill>
                     </Badge>
@@ -138,12 +112,7 @@ class Header extends React.Component {
                 </h2>
                 </NavLink>
                 </div>
-
-                </NavItem>
               </div>
-
-
-              </NavItem>
 
             </Nav>
           </Collapse>
